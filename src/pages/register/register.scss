@@ -1,0 +1,54 @@
+.main-register{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../../assets/login-bg-wood.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    .register-container {
+        width: 600px;
+        height: 550px;
+        border: 1px;
+        border-radius: 12px;
+        background: rgb(235,255,244);
+        background: -moz-radial-gradient(circle, rgba(235,255,244,1) 20%, rgba(34,193,195,1) 80%);
+        background: -webkit-radial-gradient(circle, rgba(235,255,244,1) 20%, rgba(34,193,195,1) 80%);
+        background: radial-gradient(circle, rgba(235,255,244,1) 20%, rgba(34,193,195,1) 80%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ebfff4",endColorstr="#22c1c3",GradientType=1);
+        display: flex;
+        // justify-content: center;
+        padding-top: 2rem;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        .link-go-to {
+            padding: 10px;
+        }
+        .logo {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}
+.text-field {
+    width: 60%;
+    margin-bottom: 1.4rem !important;
+}
+.text-field-error {
+    width: 60%;
+    margin: 0 !important;
+}
+.submit-btn {
+    margin-top: 1rem !important;
+    padding: 10px !important;
+    width: 60%;
+}
+
+@media screen and (max-width:600px) {
+    .main-register .register-container {
+        width: 95%;
+    }
+}
