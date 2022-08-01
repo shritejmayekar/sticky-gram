@@ -1,3 +1,3 @@
 module.exports = {
-    apiUrl: process.env.REACT_APP_API,
+    apiUrl:process.env.REACT_APP_API,
 }

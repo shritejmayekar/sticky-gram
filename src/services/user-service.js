@@ -17,5 +17,16 @@ export default class UserService {
           
         })
     }
+    fetchNotes() {
+        let token = localStorage.getItem('stickyGram')
+        return this.axiosService.get(`${config.apiUrl}/${apiRoute.FETCH_NOTE}`, true,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token '+ token,
+                }
+            }
+        )
+    }
 
 }
