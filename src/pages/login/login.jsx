@@ -2,7 +2,6 @@ import React from "react";
 import './login.scss';
 import TextField from '@mui/material/TextField';
 import { Button } from "@mui/material";
-import MonochromePhotosRoundedIcon from '@mui/icons-material/MonochromePhotosRounded';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import { Link } from "react-router-dom";

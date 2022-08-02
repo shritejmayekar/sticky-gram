@@ -2,7 +2,6 @@ import React from "react";
 import './note.scss';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from "@mui/material";
-import NoteEdit from "../dialog/dialog";
 
 const Note = (props) => {
  

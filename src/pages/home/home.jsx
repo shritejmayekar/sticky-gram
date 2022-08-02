@@ -4,7 +4,6 @@ import Header from "../../components/header/header";
 import Note from "../../components/note/note";
 import UserService from "../../services/user-service";
 import './home.scss';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';

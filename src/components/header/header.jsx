@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './header.scss';
-import NoteIcon from '@mui/icons-material/Note';
-import DescriptionIcon from '@mui/icons-material/Description';
 import IconButton from '@mui/material/IconButton';
-import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 
