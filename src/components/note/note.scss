@@ -35,7 +35,7 @@
   height: 300px;
   border-radius: 40px;
   box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-  cursor: pointer;
+  cursor:text;
   transition: 0.4s;
   .card-title {
     width: 95%;
@@ -60,9 +60,16 @@
     font-family: sans-serif;
     font-weight: normal;
     font-size: 18px;
-    // margin-top: 20px;
     height: 160px;
     overflow-y: hidden;
+    border-radius: 0px;
+    margin-top: -2rem;
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   }
   .align-right {
     right: 20px;
@@ -78,7 +85,7 @@
   .action-btn {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
   }
 }
 .card-main:hover {

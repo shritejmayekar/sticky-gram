@@ -1,0 +1,16 @@
+.note-dialog {
+    .MuiDialog-paper {
+        //padding: 38px 218px;
+        min-width: 51%;
+        height: fit-content;
+        margin: 30px auto;
+        width: 300px;
+        height: 300px;
+        border-radius: 40px;
+        box-shadow: 5px 5px 30px 7px rgb(0 0 0 / 25%), -5px -5px 30px 7px rgb(0 0 0 / 22%);
+        cursor: none;
+        transition: 0.4s;
+        display: flex;
+        align-items: center;
+    }
+}

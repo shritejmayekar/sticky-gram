@@ -10,10 +10,21 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import CustomLoader from "../../components/customLoader/customLoader";
+import NoteEdit from "../../components/dialog/dialog";
 const Home = (props) => {
     const [notes, setNotes] = React.useState([]);
     const [searchNote, setSearchNote] = React.useState('');
     const [loader, setLoader] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+    const [noteId, setNoteId] = React.useState('');
+
+    const openNote = (id) => {
+        setOpen(true);
+        setNoteId(id);
+    }   
+    const closeNote = () => {
+        setOpen(false);
+    }   
     const userService = new UserService();
     React.useEffect(() => {
         setLoader(true);
@@ -48,7 +59,7 @@ const Home = (props) => {
                     onChange={handleChangeSearch}
                     InputProps={{
                         endAdornment:(
-                            <InputAdornment>
+                            <InputAdornment position="start">
                             <IconButton onClick={clearFields}>
                                 <ClearIcon />
                             </IconButton>
@@ -69,7 +80,7 @@ const Home = (props) => {
                             return note;
                         }
                     }).map((note, index) => (
-                        <Note key={index.toString()} title={note.title} description={note.description} />
+                        <Note openNote={openNote}  key={index.toString()} id={note.id} title={note.title} description={note.description} />
 
                     ))
                 }
@@ -81,6 +92,7 @@ const Home = (props) => {
                     <AddIcon />
                 </Fab>
             </Box>
+            <NoteEdit open={open} closeNote={closeNote} noteId={noteId} />
             <CustomLoader open={loader} />
         </div>
     )
