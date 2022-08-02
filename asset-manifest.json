@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.c47b1968.css",
-    "main.js": "/react-gh-pages/static/js/main.1b07f8a2.js",
-    "static/js/787.fa87b97f.chunk.js": "/react-gh-pages/static/js/787.fa87b97f.chunk.js",
-    "static/media/login-bg-wood.jpg": "/react-gh-pages/static/media/login-bg-wood.27948f0fdc9f3f255533.jpg",
-    "index.html": "/react-gh-pages/index.html",
-    "main.c47b1968.css.map": "/react-gh-pages/static/css/main.c47b1968.css.map",
-    "main.1b07f8a2.js.map": "/react-gh-pages/static/js/main.1b07f8a2.js.map",
-    "787.fa87b97f.chunk.js.map": "/react-gh-pages/static/js/787.fa87b97f.chunk.js.map"
+    "main.css": "/sticky-gram/static/css/main.0383ec27.css",
+    "main.js": "/sticky-gram/static/js/main.5304f12a.js",
+    "static/js/787.fa87b97f.chunk.js": "/sticky-gram/static/js/787.fa87b97f.chunk.js",
+    "static/media/login-bg-wood.jpg": "/sticky-gram/static/media/login-bg-wood.27948f0fdc9f3f255533.jpg",
+    "index.html": "/sticky-gram/index.html",
+    "main.0383ec27.css.map": "/sticky-gram/static/css/main.0383ec27.css.map",
+    "main.5304f12a.js.map": "/sticky-gram/static/js/main.5304f12a.js.map",
+    "787.fa87b97f.chunk.js.map": "/sticky-gram/static/js/787.fa87b97f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c47b1968.css",
-    "static/js/main.1b07f8a2.js"
+    "static/css/main.0383ec27.css",
+    "static/js/main.5304f12a.js"
   ]
 }
