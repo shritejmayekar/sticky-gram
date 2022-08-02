@@ -6,6 +6,7 @@ import MonochromePhotosRoundedIcon from '@mui/icons-material/MonochromePhotosRou
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import { Link } from "react-router-dom";
+import useAnalyticsEventTracker from "../../components/analytics/useAnalyticsEventTracker";
 
 const Register = (props) => {
     const [email,setEmail] = React.useState('');
@@ -14,6 +15,8 @@ const Register = (props) => {
     const [nameError,setNameError] = React.useState('')
     const [emailError,setEmailError] = React.useState('')
     const [passwordError,setPasswordError] = React.useState('')
+    const gaEventTracker = useAnalyticsEventTracker('Register Page');
+
     const validateEmail = (value) => {
         if(value.length === 0) {
             setEmailError("Email Required");
@@ -55,6 +58,9 @@ const Register = (props) => {
     const handleChangePassword = (event) => {
         validatePassword(event.target.value)
         setPassword(event.target.value);
+    }
+    const submitReg = () => {
+        gaEventTracker('Register btn click')
     }
     return (
         <div className="main-register">
@@ -102,7 +108,7 @@ const Register = (props) => {
                     onBlur={(event)=>{validatePassword(event.target.value)}}
                     helperText={passwordError}
                 />
-                <Button variant="contained" className="submit-btn">
+                <Button variant="contained" className="submit-btn" onClick={submitReg}>
                     Submit
                 </Button>
                 <div className="link-go-to">

@@ -11,6 +11,8 @@ import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import CustomLoader from "../../components/customLoader/customLoader";
 import NoteEdit from "../../components/dialog/dialog";
+import useAnalyticsEventTracker from "../../components/analytics/useAnalyticsEventTracker";
+
 const Home = (props) => {
     const [notes, setNotes] = React.useState([]);
     const [searchNote, setSearchNote] = React.useState('');
@@ -26,6 +28,7 @@ const Home = (props) => {
         setOpen(false);
     }   
     const userService = new UserService();
+    const gaEventTracker = useAnalyticsEventTracker('Home Page');
     React.useEffect(() => {
         setLoader(true);
         userService.fetchNotes().then(res => {
@@ -47,7 +50,7 @@ const Home = (props) => {
     return (
         <div className="home-container-main">
             <Header />
-            <div className="search-bar">
+            <div className="search-bar" >
                 <TextField
                     autoComplete="off"
                     id="outlined-basic"
@@ -56,6 +59,7 @@ const Home = (props) => {
                     placeholder="type note title here"
                     label="Search"
                     value={searchNote}
+                    onClick={gaEventTracker('search')}
                     onChange={handleChangeSearch}
                     InputProps={{
                         endAdornment:(
