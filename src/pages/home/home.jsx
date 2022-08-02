@@ -9,13 +9,20 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
+import CustomLoader from "../../components/customLoader/customLoader";
 const Home = (props) => {
     const [notes, setNotes] = React.useState([]);
     const [searchNote, setSearchNote] = React.useState('');
+    const [loader, setLoader] = React.useState(false);
     const userService = new UserService();
     React.useEffect(() => {
+        setLoader(true);
         userService.fetchNotes().then(res => {
             setNotes(res.data.results)
+            setLoader(false)
+        })
+        .catch(err=>{
+            setLoader(false)
         })
     }, [])
 
@@ -74,6 +81,7 @@ const Home = (props) => {
                     <AddIcon />
                 </Fab>
             </Box>
+            <CustomLoader open={loader} />
         </div>
     )
 }

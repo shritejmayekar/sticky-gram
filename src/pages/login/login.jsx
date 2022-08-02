@@ -12,12 +12,14 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
+import CustomLoader from "../../components/customLoader/customLoader";
 
 const Login = (props) => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('')
     const [emailError, setEmailError] = React.useState('')
     const [passwordError, setPasswordError] = React.useState('')
+    const [loader, setLoader] = React.useState(false);
     const [values, setValues] = React.useState({
         showPassword: false,
     });
@@ -76,14 +78,17 @@ const Login = (props) => {
                 "email": email,
                 "password": password
             }
+            setLoader(true);
             userService.login(data).then(res => {
                 console.log(res.data.token)
                 localStorage.setItem('stickyGram', res.data.token)
                 navigate('/');
+                setLoader(false);
 
             })
                 .catch(err => {
                     console.log(err)
+                    setLoader(false);
                 })
         }
     }
@@ -144,6 +149,7 @@ const Login = (props) => {
                 </div>
 
             </div>
+            <CustomLoader open={loader} />
 
         </div>
     )
