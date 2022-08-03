@@ -1,12 +1,10 @@
 {
   "name": "sticky-gram",
   "version": "0.1.0",
-  "homepage": "https://shritejmayekar.github.io/sticky-gram",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@mars/heroku-js-runtime-env": "^3.0.2",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.2",
     "@testing-library/jest-dom": "^5.16.4",
@@ -51,6 +49,8 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0",
+    "i": "^0.3.7",
+    "npm": "^8.15.1",
     "sass": "^1.54.0"
   }
 }
