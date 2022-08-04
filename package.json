@@ -21,10 +21,10 @@
   },
   "scripts": {
     "analyze": "react-scripts build && source-map-explorer 'build/static/js/*.js'",
-    "build": "react-scripts build",
+    "start": "node --max_old_space_size=2560 node_modules/.bin/react-scripts start",
+    "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:https": "HTTPS=true react-scripts start"
