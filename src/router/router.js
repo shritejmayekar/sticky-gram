@@ -11,7 +11,7 @@ import ReactGA from 'react-ga';
 const AppRouter = () => {
     React.useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search);
-      }, []);
+      }, [window.location.pathname]);
     return (
 
         <BrowserRouter>
