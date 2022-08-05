@@ -6,9 +6,7 @@ import Home from "../pages/home/home";
 import Login from "../pages/login/login";
 import Register from "../pages/register/register";
 import ReactGA from 'react-ga';
-import environment from "../config/environment";
-const TRACKING_ID = environment.googleTrackingId; // OUR_TRACKING_ID
-ReactGA.initialize(TRACKING_ID);
+
 
 const AppRouter = () => {
     React.useEffect(() => {

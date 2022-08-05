@@ -10,13 +10,15 @@ import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import CustomLoader from "../../components/customLoader/customLoader";
 import NoteEdit from "../../components/dialog/dialog";
+import useAnalyticsEventTracker from "../../components/analytics/useAnalyticsEventTracker";
+
 const Home = (props) => {
     const [notes, setNotes] = React.useState([]);
     const [searchNote, setSearchNote] = React.useState('');
     const [loader, setLoader] = React.useState(false);
     const [open, setOpen] = React.useState(false);
     const [noteId, setNoteId] = React.useState('');
-
+    const gaEventTracker = useAnalyticsEventTracker('Home Page');
     const openNote = (id) => {
         setOpen(true);
         setNoteId(id);

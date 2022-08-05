@@ -12,6 +12,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import CustomLoader from "../../components/customLoader/customLoader";
+import useAnalyticsEventTracker from "../../components/analytics/useAnalyticsEventTracker";
 
 const Login = (props) => {
     const [email, setEmail] = React.useState('');
@@ -22,6 +23,7 @@ const Login = (props) => {
     const [values, setValues] = React.useState({
         showPassword: false,
     });
+    const gaEventTracker = useAnalyticsEventTracker('Login Page');
     const handleClickShowPassword = () => {
         setValues({
             ...values,
@@ -72,6 +74,7 @@ const Login = (props) => {
     }
 
     const submitReg = () => {
+        gaEventTracker('Login btn click')
         if (!validateEmail(email) && !validatePassword(password)) {
             let data = {
                 "email": email,
