@@ -74,7 +74,7 @@ const Login = (props) => {
     }
 
     const submitReg = () => {
-        gaEventTracker('Login btn click')
+        gaEventTracker.eventTracker('login click','login-submit-click')
         if (!validateEmail(email) && !validatePassword(password)) {
             let data = {
                 "email": email,
