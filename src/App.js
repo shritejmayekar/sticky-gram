@@ -1,9 +1,7 @@
 import './App.css';
 import AppRouter from './router/router';
 import ReactGA from 'react-ga';
-import environment from './config/environment';
-const TRACKING_ID = environment.googleTrackingId; // OUR_TRACKING_ID
-ReactGA.initialize(TRACKING_ID);
+ReactGA.initialize({ trackingId: process.env.googleTrackingId });
 
 function App() {
   return (
