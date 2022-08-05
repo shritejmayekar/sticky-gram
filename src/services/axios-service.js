@@ -15,6 +15,10 @@ axios_service.prototype.put = function (url, data, isHeaderReq = false, header) 
     return axios.put(url, data, isHeaderReq && header)
 }
 
+axios_service.prototype.patch = function (url, data, isHeaderReq = false, header) {
+    // let resp =  axios.put(url, data, isHeaderReq && header);
+    return axios.patch(url, data, isHeaderReq && header)
+}
 axios_service.prototype.getTimeout = function (url, isHeaderReq = false, header) {
     return axios.get(url, isHeaderReq && header)
 }

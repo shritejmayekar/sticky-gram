@@ -10,7 +10,6 @@ import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import CustomLoader from "../../components/customLoader/customLoader";
 import NoteEdit from "../../components/dialog/dialog";
-
 const Home = (props) => {
     const [notes, setNotes] = React.useState([]);
     const [searchNote, setSearchNote] = React.useState('');
@@ -27,6 +26,10 @@ const Home = (props) => {
     }   
     const userService = new UserService();
     React.useEffect(() => {
+        loadNotes();
+    }, [])
+
+    const loadNotes = () => {
         setLoader(true);
         userService.fetchNotes().then(res => {
             setNotes(res.data.results)
@@ -35,7 +38,7 @@ const Home = (props) => {
         .catch(err=>{
             setLoader(false)
         })
-    }, [])
+    }
 
     const handleChangeSearch = (event) => {
         setSearchNote(event.target.value)

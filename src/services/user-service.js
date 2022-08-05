@@ -19,7 +19,7 @@ export default class UserService {
     }
     fetchNotes() {
         let token = localStorage.getItem('stickyGram')
-        return this.axiosService.get(`${config.apiUrl}/${apiRoute.FETCH_ALL_NOTE}`, true,
+        return this.axiosService.get(`${config.apiUrl}/${apiRoute.NOTE_API}`, true,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,7 +30,19 @@ export default class UserService {
     }
     fetchNoteById(noteId) {
         let token = localStorage.getItem('stickyGram')
-        return this.axiosService.get(`${config.apiUrl}/${apiRoute.FETCH_PARTICULAR_NOTE}/${noteId}/`, true,
+        return this.axiosService.get(`${config.apiUrl}/${apiRoute.NOTE_API}/${noteId}/`, true,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token '+ token,
+                }
+            }
+        )
+    }
+
+    updateNoteById(noteId,data) {
+        let token = localStorage.getItem('stickyGram')
+        return this.axiosService.patch(`${config.apiUrl}/${apiRoute.NOTE_API}${noteId}/`,data, true,
             {
                 headers: {
                     'Content-Type': 'application/json',
