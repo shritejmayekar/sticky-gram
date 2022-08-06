@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import './register.scss';
 import TextField from '@mui/material/TextField';
 import { Button } from "@mui/material";
@@ -6,7 +6,6 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import { Link } from "react-router-dom";
 import useAnalyticsEventTracker from "../../components/analytics/useAnalyticsEventTracker";
-import usePageTracking from "../../components/usePageTracking/usePageTracking";
 
 const Register = (props) => {
     const [email,setEmail] = React.useState('');
@@ -15,6 +14,7 @@ const Register = (props) => {
     const [nameError,setNameError] = React.useState('')
     const [emailError,setEmailError] = React.useState('')
     const [passwordError,setPasswordError] = React.useState('')
+    const gaEventTracker = useAnalyticsEventTracker('Register Page');
 
     const validateEmail = (value) => {
         if(value.length === 0) {
@@ -59,9 +59,8 @@ const Register = (props) => {
         setPassword(event.target.value);
     }
     const submitReg = () => {
+        gaEventTracker('Register btn click')
     }
-    usePageTracking();
-
     return (
         <div className="main-register">
             <div className="register-container">

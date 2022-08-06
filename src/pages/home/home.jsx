@@ -11,7 +11,6 @@ import ClearIcon from '@mui/icons-material/Clear';
 import CustomLoader from "../../components/customLoader/customLoader";
 import NoteEdit from "../../components/dialog/dialog";
 import useAnalyticsEventTracker from "../../components/analytics/useAnalyticsEventTracker";
-import usePageTracking from "../../components/usePageTracking/usePageTracking";
 
 const Home = (props) => {
     const [notes, setNotes] = React.useState([]);
@@ -19,6 +18,7 @@ const Home = (props) => {
     const [loader, setLoader] = React.useState(false);
     const [open, setOpen] = React.useState(false);
     const [noteId, setNoteId] = React.useState('');
+    const gaEventTracker = useAnalyticsEventTracker('Home Page');
     const openNote = (id) => {
         setOpen(true);
         setNoteId(id);
@@ -48,7 +48,7 @@ const Home = (props) => {
     const clearFields = () => {
         setSearchNote('')
     }
-    usePageTracking();
+
     return (
         <div className="home-container-main">
             <Header />
