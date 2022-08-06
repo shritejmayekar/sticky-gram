@@ -13,6 +13,12 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import CustomLoader from "../../components/customLoader/customLoader";
 import useAnalyticsEventTracker from "../../components/analytics/useAnalyticsEventTracker";
+import usePageTracking from "../../components/usePageTracking/usePageTracking";
+import ReactGA from "react-ga";
+import { Category } from "@mui/icons-material";
+import CustomSnackbar from "../../components/custom-Snackbar/CustomSnackbar";
+import { SnackBarState } from "../../config/snackBarState";
+import messages from "../../config/messages";
 
 const Login = (props) => {
     const [email, setEmail] = React.useState('');
@@ -23,7 +29,38 @@ const Login = (props) => {
     const [values, setValues] = React.useState({
         showPassword: false,
     });
-    const gaEventTracker = useAnalyticsEventTracker('Login Page');
+    const [snackbar, setSnackbar] = React.useState({
+        isOpen: false,
+        message: '',
+        type: ''
+    })
+    const openSnackBar = (message, type) => {
+        setSnackbar({
+            isOpen: true,
+            message: message,
+            type: type
+        })
+        setTimeout(() => {
+            closeSnackbar()
+
+        }, 6000);
+    }
+    const closeSnackbar = () => {
+        setSnackbar({
+            isOpen: false,
+            message: "",
+            type: ""
+        })
+
+    }
+    const eventTrack = (category, action, label) => {
+        console.log("GA event:", category, ":", action, ":", label);
+        ReactGA.event({
+          category: category,
+          action: action,
+          label: label,
+        })
+      }
     const handleClickShowPassword = () => {
         setValues({
             ...values,
@@ -74,6 +111,7 @@ const Login = (props) => {
     }
 
     const submitReg = () => {
+
         if (!validateEmail(email) && !validatePassword(password)) {
             let data = {
                 "email": email,
@@ -83,16 +121,21 @@ const Login = (props) => {
             userService.login(data).then(res => {
                 console.log(res.data.token)
                 localStorage.setItem('stickyGram', res.data.token)
-                navigate('/');
-                setLoader(false);
+                openSnackBar(messages.LOGIN_SUCCESS_MSG, SnackBarState.SUCCESS)
+                setTimeout(() => {
+                    navigate('/');
+                    setLoader(false);
+                }, 1000);
 
             })
                 .catch(err => {
                     console.log(err)
                     setLoader(false);
+                    openSnackBar(messages.LOGIN_FAILURE_MSG, SnackBarState.ERROR)
                 })
         }
     }
+    usePageTracking();
     return (
         <div className="main-login">
             <div className="login-container">
@@ -142,7 +185,7 @@ const Login = (props) => {
                     onKeyPress={keyPressed}
 
                 />
-                <Button variant="contained" onClick={submitReg} className="submit-btn">
+                <Button variant="contained" onClick={()=>{submitReg();eventTrack.bind(this, "Sign Up Screen", "Sign Up Button", "Button")}} className="submit-btn">
                     Submit
                 </Button>
                 <div className="link-go-to">
@@ -151,6 +194,7 @@ const Login = (props) => {
 
             </div>
             <CustomLoader open={loader} />
+            <CustomSnackbar open={snackbar.isOpen} close={closeSnackbar} message={snackbar.message} vertical='bottom' horizontal='right' type={snackbar.type} />
 
         </div>
     )

@@ -3,11 +3,12 @@
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
-    background-image: url('../../assets/login-bg-wood.jpg');
+    background-image: url('../../assets/login-bg-wood-min-min.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: center;
     align-items: center;
+    image-rendering: -webkit-optimize-contrast;
     .login-container {
         width: 600px;
         height: 550px;
