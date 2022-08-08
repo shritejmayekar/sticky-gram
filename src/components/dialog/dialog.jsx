@@ -1,12 +1,10 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import './dialog.scss';
 import UserService from '../../services/user-service';
-import CustomLoader from "../../components/customLoader/customLoader";
 import Skeleton from '@mui/material/Skeleton';
-import { TextareaAutosize, TextField } from '@mui/material';
+import { TextareaAutosize } from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -15,37 +13,36 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function NoteEdit(props) {
   const [note, setNote] = React.useState({title:'',id:'',description:''});
-  const [loader, setLoader] = React.useState(false);
-  const userService = new UserService();
   React.useEffect(() => {
+    const userService = new UserService();
     setNote({title:'',id:'',description:''})
+    const fetchNote = () => {
+      userService.fetchNoteById(props.noteId).then(res => {
+        setNote(res.data)
+      })
+        .catch(err => {
+  
+        })
+    }
     if (props.noteId) {
+      
       fetchNote();
     }
   }, [props.noteId])
 
-  const fetchNote = () => {
-    setLoader(true);
-    userService.fetchNoteById(props.noteId).then(res => {
-      setNote(res.data)
-      setLoader(false);
-    })
-      .catch(err => {
-        setLoader(false);
-
-      })
-  }
+  
 
   const updateNote = () => {
     let payload = {
       "title":note.title,
       "description":note.description
     }
+    const userService = new UserService();
     userService.updateNoteById(props.noteId,payload).then(res => {
         console.log(res);
     })
       .catch(err => {
-
+        console.log(err);
       })
   }
 

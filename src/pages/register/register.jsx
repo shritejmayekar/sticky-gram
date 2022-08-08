@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import { Link } from "react-router-dom";
-import useAnalyticsEventTracker from "../../components/analytics/useAnalyticsEventTracker";
 
 const Register = (props) => {
     const [email,setEmail] = React.useState('');
@@ -14,7 +13,6 @@ const Register = (props) => {
     const [nameError,setNameError] = React.useState('')
     const [emailError,setEmailError] = React.useState('')
     const [passwordError,setPasswordError] = React.useState('')
-    const gaEventTracker = useAnalyticsEventTracker('Register Page');
 
     const validateEmail = (value) => {
         if(value.length === 0) {
@@ -59,7 +57,6 @@ const Register = (props) => {
         setPassword(event.target.value);
     }
     const submitReg = () => {
-        gaEventTracker('Register btn click')
     }
     return (
         <div className="main-register">
@@ -72,7 +69,6 @@ const Register = (props) => {
                     error={nameError.length > 0 ? true:false}
                     className={nameError.length > 0 ? "text-field-error": "text-field"}
                     label="UserName"
-                    id="outlined-name"
                     type="text"
                     size="medium"
                     value={userName}
@@ -85,7 +81,6 @@ const Register = (props) => {
                     error={emailError.length > 0 ? true:false}
                     className={emailError.length > 0 ? "text-field-error": "text-field"}
                     label="Email"
-                    id="outlined-name"
                     type="text"
                     size="medium"
                     value={email}
@@ -98,7 +93,6 @@ const Register = (props) => {
                     className={passwordError.length > 0 ? "text-field-error": "text-field"}
                     error={passwordError.length > 0 ? true:false}
                     label="Password"
-                    id="outlined-name"
                     type="password"
                     size="medium"
                     placeholder="type here password"

@@ -10,7 +10,6 @@ import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
 import CustomLoader from "../../components/customLoader/customLoader";
 import NoteEdit from "../../components/dialog/dialog";
-import useAnalyticsEventTracker from "../../components/analytics/useAnalyticsEventTracker";
 
 const Home = (props) => {
     const [notes, setNotes] = React.useState([]);
@@ -18,7 +17,6 @@ const Home = (props) => {
     const [loader, setLoader] = React.useState(false);
     const [open, setOpen] = React.useState(false);
     const [noteId, setNoteId] = React.useState('');
-    const gaEventTracker = useAnalyticsEventTracker('Home Page');
     const openNote = (id) => {
         setOpen(true);
         setNoteId(id);
@@ -26,21 +24,22 @@ const Home = (props) => {
     const closeNote = () => {
         setOpen(false);
     }   
-    const userService = new UserService();
     React.useEffect(() => {
+        const userService = new UserService();
+        const loadNotes = () => {
+            setLoader(true);
+            userService.fetchNotes().then(res => {
+                setNotes(res.data.results)
+                setLoader(false)
+            })
+            .catch(err=>{
+                setLoader(false)
+            })
+        }
         loadNotes();
     }, [])
 
-    const loadNotes = () => {
-        setLoader(true);
-        userService.fetchNotes().then(res => {
-            setNotes(res.data.results)
-            setLoader(false)
-        })
-        .catch(err=>{
-            setLoader(false)
-        })
-    }
+    
 
     const handleChangeSearch = (event) => {
         setSearchNote(event.target.value)

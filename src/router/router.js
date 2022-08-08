@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Router, Routes, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthorizeRoute from "../components/routes/authorizesRoute";
 import PrivateRoute from "../components/routes/protectedRoute";
 import Home from "../pages/home/home";
@@ -11,9 +11,9 @@ import ReactGA from 'react-ga';
 const AppRouter = () => {
     React.useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search);
-      }, [window.location.pathname]);
+      }, []);
     return (
-
+<>
         <BrowserRouter>
             <Routes>
                 <Route
@@ -46,7 +46,7 @@ const AppRouter = () => {
 
         </BrowserRouter>
 
-
+</>
     )
 }
 
