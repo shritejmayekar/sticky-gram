@@ -6,11 +6,11 @@ import { IconButton } from "@mui/material";
 const Note = (props) => {
  
     return (
-        <div className="card-main" onClick={()=>{props.openNote(props.id)}}>
-            <div className="card-title title-black">
+        <div className="card-main">
+            <div className="card-title title-black" onClick={()=>{props.openNote(props.id)}}>
                 <p>{props.title}</p>
             </div>
-            <div className="card-subtitle title-black">
+            <div className="card-subtitle title-black" onClick={()=>{props.openNote(props.id)}}>
                 <p>{props.description}</p>
             </div>
             <div className="action-btn">

@@ -5,16 +5,13 @@ import PrivateRoute from "../components/routes/protectedRoute";
 import Home from "../pages/home/home";
 import Login from "../pages/login/login";
 import Register from "../pages/register/register";
-import ReactGA from 'react-ga';
 
 
 const AppRouter = () => {
-    React.useEffect(() => {
-        ReactGA.pageview(window.location.pathname + window.location.search);
-      }, []);
+   
     return (
 <>
-        <BrowserRouter>
+        {/* <BrowserRouter> */}
             <Routes>
                 <Route
                     path="/"
@@ -44,7 +41,7 @@ const AppRouter = () => {
                 />
             </Routes>
 
-        </BrowserRouter>
+        {/* </BrowserRouter> */}
 
 </>
     )
