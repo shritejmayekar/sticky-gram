@@ -12,7 +12,7 @@ function App() {
   console.log('search', location.search);
   console.log('location', location);
   React.useEffect(() => {
-    console.log('in',location)
+    console.log('in',window.location.pathname)
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, [location]);
 
