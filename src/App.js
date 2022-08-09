@@ -13,7 +13,7 @@ function App() {
   console.log('location', location);
   React.useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
-  }, [location]);
+  }, [location.pathname]);
 
   return (
     <div className="App">
