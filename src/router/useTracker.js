@@ -8,7 +8,8 @@ const useGaTracker = () => {
 
     useEffect(() => {
         if (!window.location.href.includes("localhost")) {
-            ReactGA.initialize(process.env.googleTrackingId);
+            ReactGA.initialize({ trackingId: process.env.googleTrackingId });
+            // ReactGA.initialize(process.env.googleTrackingId);
         }
         setInitialized(true);
     }, []);
