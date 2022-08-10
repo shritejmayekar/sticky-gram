@@ -2,8 +2,7 @@ import './App.css';
 import AppRouter from './router/router';
 import {useLocation} from 'react-router-dom';
 import React from "react";
-import useGaTracker from './router/useTracker';
-import { GA_TRACKING_ID, initGA } from '../src/config/GoogleAnalytics'
+import { GA_TRACKING_ID, initGA } from '../src/config/googleAnalytics'
 window.dataLayer = window.dataLayer || [];
 
 function App() {

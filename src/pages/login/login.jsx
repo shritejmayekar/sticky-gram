@@ -12,6 +12,9 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import CustomLoader from "../../components/customLoader/customLoader";
+import CustomSnackbar from "../../components/customSnackBar/customSnackBar";
+import { SnackBarState } from "../../config/snackBarStates";
+import messages from "../../config/messages";
 
 const Login = (props) => {
     const [email, setEmail] = React.useState('');
@@ -22,6 +25,30 @@ const Login = (props) => {
     const [values, setValues] = React.useState({
         showPassword: false,
     });
+    const [snackbar, setSnackbar] = React.useState({
+        isOpen: false,
+        message: '',
+        type: ''
+    })
+    const openSnackBar = (message, type) => {
+        setSnackbar({
+            isOpen: true,
+            message: message,
+            type: type
+        })
+        setTimeout(() => {
+            closeSnackbar()
+
+        }, 6000);
+    }
+    const closeSnackbar = () => {
+        setSnackbar({
+            isOpen: false,
+            message: "",
+            type: ""
+        })
+
+    }
     const handleClickShowPassword = () => {
         setValues({
             ...values,
@@ -77,16 +104,32 @@ const Login = (props) => {
                 "email": email,
                 "password": password
             }
+            window.gtag('event', 'login_submit ', {
+                'event_category': 'Login',
+                'event_label': 'confirm  button click'
+            });
             setLoader(true);
             userService.login(data).then(res => {
                 console.log(res.data.token)
                 localStorage.setItem('stickyGram', res.data.token)
-                navigate('/');
-                setLoader(false);
+                window.gtag('event', 'login_success ' , {
+                    'event_category': 'Login',
+                    'event_label': 'confirm button click'
+                });
+                openSnackBar(messages.LOGIN_SUCCESS_MSG, SnackBarState.SUCCESS)
+                setTimeout(() => {
+                    navigate('/');
+                    setLoader(false);
+                }, 1000);
 
             })
                 .catch(err => {
                     console.log(err)
+                    window.gtag('event', 'login_failure ' , {
+                        'event_category': 'Login',
+                        'event_label': 'confirm button click'
+                    });
+                    openSnackBar(messages.LOGIN_FAILURE_MSG, SnackBarState.ERROR)
                     setLoader(false);
                 })
         }
@@ -149,6 +192,7 @@ const Login = (props) => {
 
             </div>
             <CustomLoader open={loader} />
+            <CustomSnackbar open={snackbar.isOpen} close={closeSnackbar} message={snackbar.message} vertical='bottom' horizontal='right' type={snackbar.type} />
 
         </div>
     )
