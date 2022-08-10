@@ -1,27 +1,32 @@
 import './App.css';
 import AppRouter from './router/router';
-import ReactGA from 'react-ga';
 import {useLocation} from 'react-router-dom';
 import React from "react";
 import useGaTracker from './router/useTracker';
-// ReactGA.initialize({ trackingId: process.env.googleTrackingId });
+import { GA_TRACKING_ID, initGA } from '../src/config/GoogleAnalytics'
+window.dataLayer = window.dataLayer || [];
 
 function App() {
-  // let location = useLocation();
+  
+  let location = useLocation();
   // console.log('hash', location.hash);
   // console.log('pathname', location.pathname);
   // console.log('search', location.search);
   // console.log('location', location);
-  // React.useEffect(() => {
-  //   console.log('in',window.location.pathname)
-  //   ReactGA.pageview(location.pathname);
+  React.useEffect(() => {
+    window.gtag('config', GA_TRACKING_ID, {
+      'page_title': location.pathname,
+      'page_path': location.pathname
+  })
+    // ReactGA.pageview(location.pathname);
    
-  //   // ReactGA.set({ page: location.pathname });
-  //   // ReactGA.pageview(location.pathname)
-  //   // ReactGA.ga('send', 'pageview', location.pathname);
+    // ReactGA.set({ page: location.pathname });
+    // ReactGA.pageview(location.pathname)
+    // ReactGA.ga('send', 'pageview', location.pathname);
 
-  // }, [location]);
-  useGaTracker();
+  }, [location]);
+  initGA();
+
   return (
     <div className="App">
      <AppRouter />
