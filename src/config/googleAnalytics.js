@@ -1,7 +1,7 @@
 
 
 
-export const GA_TRACKING_ID = process.env.GOOGLE_ANALYTICS_TRACKING_ID
+export const GA_TRACKING_ID = 'UA-179100877-1'
 
 export const initGA = () => {
     window.gtag('config', GA_TRACKING_ID, {
