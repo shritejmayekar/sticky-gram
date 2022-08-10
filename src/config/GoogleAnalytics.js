@@ -15,7 +15,7 @@ export const initGA = () => {
 export const PageView = (url) => {
     // console.log("value of path ", url);
 
-    window.gtag('config', GA_TRACKING_ID, {
+    window.gtag('send', GA_TRACKING_ID, {
         'page_title': url,
         'page_path': url
     })
