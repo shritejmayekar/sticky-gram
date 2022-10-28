@@ -21,8 +21,8 @@
   },
   "scripts": {
     "analyze": "react-scripts build && source-map-explorer 'build/static/js/*.js'",
-    "start": "node --max_old_space_size=2560 node_modules/.bin/react-scripts start",
-    "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
+    "start": "npm run build",
+    "build": "npm run build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
